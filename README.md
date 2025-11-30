@@ -45,7 +45,8 @@ Key transformations included:
 - Geographic coordinate usage for mapping  
 - Encoded host response times and amenity patterns  
 - Derived metadata such as *amenities count*, *host tenure*, etc.  
-
+- Utilized Data augmentation techniques for a few tasks involving feature engineering.
+  
 This transformation stabilized the target distribution and improved model learning.
 
 ---
@@ -90,7 +91,7 @@ Both models handled categorical encoding cleanly and worked well with structured
 
 ---
 
-## 🗺️ Final Application: Streamlit Dashboard
+## 🗺️ Final Application: Streamlit Dashboard (Utilized Data Augmentation techniques for forming a dashboard skeleton)
 
 A final dashboard allows:
 
@@ -110,12 +111,12 @@ This creates a real-world usable interface for:
 
 ---
 
-## 🧰 Tech Stack
--Python
--Pandas • NumPy
--Scikit-learn • CatBoost • XGBoost • LightGBM
--Folium • GeoPandas
--Streamlit
+## 🧰 Tech Stack:
+- Python
+- Pandas • NumPy
+- Scikit-learn • CatBoost • XGBoost • LightGBM
+- Folium • GeoPandas
+- Streamlit
 
 ## 🎯 Final Thought
 
