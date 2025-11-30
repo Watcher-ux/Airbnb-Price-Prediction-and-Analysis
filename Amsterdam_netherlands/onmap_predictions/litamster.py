@@ -6,9 +6,9 @@ import geopandas as gpd
 import folium
 from streamlit_folium import st_folium
 
-# ------------------
+
 # PAGE CONFIG
-# ------------------
+
 st.set_page_config(
     page_title="Amsterdam Airbnb Price Explorer",
     layout="wide"
@@ -17,9 +17,9 @@ st.set_page_config(
 st.title("Amsterdam Airbnb Price Explorer 🏠💶")
 st.markdown("Map of listings with **predicted prices**, neighbourhood filters, and geo-boundaries.")
 
-# ------------------
+
 # LOADERS (cached)
-# ------------------
+
 @st.cache_resource
 def load_model(path: str):
     return joblib.load(path)
@@ -31,17 +31,17 @@ def load_data(listing_path: str, neigh_csv_path: str, neigh_geojson_path: str):
     neigh_df = pd.read_csv(neigh_csv_path)
     return df, neigh_df, gdf
 
-# ------------------
+
 # FILE PATHS
-# ------------------
+
 MODEL_PATH = "C:/Zcommon/trainee/project_1/final_price_model.pkl"
 LISTINGS_PATH = "C:/Zcommon/trainee/project_1/amster_with_preds.csv"
 NEIGH_CSV_PATH = "C:/Zcommon/trainee/project_1/airbnb_/neighbourhoods_amster.csv"
 NEIGH_GEOJSON_PATH = "C:/Zcommon/trainee/project_1/airbnb_/neighbourhoods_amster_geo.geojson"
 
-# ------------------
+
 # LOAD DATA
-# ------------------
+
 model = load_model(MODEL_PATH)
 df, neigh_df, gdf = load_data(LISTINGS_PATH, NEIGH_CSV_PATH, NEIGH_GEOJSON_PATH)
 
@@ -59,12 +59,12 @@ for cand in ["neighbourhood_cleansed", "neighbourhood", "neighbourhood_group"]:
         neigh_col = cand
         break
 
-# ------------------
+
 # SIDEBAR FILTERS
-# ------------------
+
 st.sidebar.header("Filters")
 
-# Neighbourhood filter (if exists)
+# Neighbourhood filter 
 if neigh_col:
     neighs = sorted(df[neigh_col].dropna().unique().tolist())
     selected_neigh = st.sidebar.selectbox("Neighbourhood", options=["All"] + neighs)
@@ -82,9 +82,9 @@ price_range = st.sidebar.slider(
     value=(min_price, max_price)
 )
 
-# ------------------
+
 # FILTER DATA
-# ------------------
+
 mask = (df["predicted_price"] >= price_range[0]) & (df["predicted_price"] <= price_range[1])
 
 if neigh_col and selected_neigh != "All":
@@ -96,11 +96,11 @@ if df_filt.empty:
     st.warning("⚠ No listings match your filters.")
     st.stop()
 
-## extra addtion for rounding-off price values
+# Addtion for rounding-off price values
 df_filt["predicted_price"] = df_filt["predicted_price"].round(0)  
-# ------------------
+
 # KPI ROW
-# ------------------
+
 col1, col2, col3 = st.columns(3)
 col1.metric("Listings shown", len(df_filt))
 col2.metric("Avg predicted price (€)", f"{df_filt['predicted_price'].mean():.2f}")
@@ -108,9 +108,9 @@ col3.metric("Median predicted price (€)", f"{df_filt['predicted_price'].median
 
 st.write("---")
 
-# ------------------
+
 # MAP (FOLIUM)
-# ------------------
+
 center_lat = df_filt["latitude"].mean()
 center_lon = df_filt["longitude"].mean()
 
@@ -143,9 +143,9 @@ for _, row in df_filt.iterrows():
 st.subheader("🗺 Map of Predicted Listings")
 st_folium(m, width=1400, height=650)
 
-# ------------------
+
 # TABLE
-# ------------------
+
 st.subheader("📋 Filtered Listings")
 display_cols = ["id", "name", "predicted_price","price", "latitude", "longitude"]
 if neigh_col:
@@ -153,4 +153,5 @@ if neigh_col:
 
 st.dataframe(df_filt[display_cols].sort_values("predicted_price", ascending=False))
 
-##END
+## END
+
