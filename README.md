@@ -2,6 +2,7 @@
 
 Predicting prices isn’t just math — it’s understanding a city’s rhythm.  
 This project explores Airbnb listings, cleans their chaos, trains multiple machine learning models, and finally turns predictions into a usable, interactive dashboard powered by **Streamlit**.
+Alos, when I started to explore the Airbnb one major inference was that on many of their listings(sometimes for more than half the dataset) the price was missing, I found it particularly odd and started exploring(Insight derived by exploring the listing files from *Inside Airbnb*).
 
 ---
 
@@ -110,4 +111,16 @@ This creates a real-world usable interface for:
 ---
 
 ## 🧰 Tech Stack
+-Python
+-Pandas • NumPy
+-Scikit-learn • CatBoost • XGBoost • LightGBM
+-Folium • GeoPandas
+-Streamlit
 
+## 🎯 Final Thought
+
+This project blends data science, modelling, urban insight and visualization — transforming raw Airbnb records into a living, predictive tool.
+
+## Credits/Sources:
+-The datafiles is publicly available at (insideairbnb.com/get-the-data/)
+-This project is solely for educational insights and all the rights to the original data belong to Airbnb/insideairbnb.
