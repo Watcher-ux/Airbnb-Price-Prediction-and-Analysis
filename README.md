@@ -123,5 +123,5 @@ This creates a real-world usable interface for:
 This project blends data science, modelling, urban insight and visualization — transforming raw Airbnb records into a living, predictive tool.
 
 ## Credits/Sources:
--The datafiles is publicly available at (insideairbnb.com/get-the-data/)
--This project is solely for educational insights and all the rights to the original data belong to Airbnb/insideairbnb.
+- The datafiles is publicly available at (insideairbnb.com/get-the-data/)
+- This project is solely for educational insights and all the rights to the original data belong to Airbnb/insideairbnb.
