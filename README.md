@@ -33,7 +33,7 @@ A vibrant city full of neighborhood variation, tourism demand, and pricing uncer
 | Missing Value Handling | Mean or encoded representations depending on type |
 | Feature Encoding       | One-hot, ordinal, multi-hot encoding              |
 | Duplicate Removal      | Ensuring no repeated listings                     |
-| Feature Extraction     | Bathroom type, amenity counts, host longevity     |
+| Feature Extraction     | Bathroom type, amenity counts                     |
 
 ---
 
@@ -44,7 +44,7 @@ Key transformations included:
 - **Log1p transform on `price`** to tame extreme outliers  
 - Geographic coordinate usage for mapping  
 - Encoded host response times and amenity patterns  
-- Derived metadata such as *amenities count*, *host tenure*, etc.  
+- Derived metadata such as *amenities count*, etc.  
 - Utilized Data augmentation techniques for a few tasks involving feature engineering.
   
 This transformation stabilized the target distribution and improved model learning.
